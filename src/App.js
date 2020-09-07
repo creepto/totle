@@ -1,75 +1,69 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import Trade from './pages/Trade';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import { Navbar, Nav } from "react-bootstrap";
 
-// This site has 3 pages, all of which are rendered
-// dynamically in the browser (not server rendered).
-//
-// Although the page does not ever refresh, notice how
-// React Router keeps the URL up to date as you navigate
-// through the site. This preserves the browser history,
-// making sure things like the back button and bookmarks
-// work properly.
+import Trade from "./pages/Trade";
+import Dashboard from "./pages/Dashboard";
+import About from "./pages/About";
+
+import "./App.css";
 
 export default function App() {
   return (
     <Router>
       <div className="App">
-        <header className="App-header">Totle Sample</header>
-        <ul className="navbar">
-          <li>
-            <Link to="/">Trade</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
-        <Switch>
-          <Route exact path="/">
-            <Trade />
-          </Route>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-        </Switch>
+        <Navbar bg="dark" variant="dark">
+          <Navbar.Brand href="/">Totle Sample</Navbar.Brand>
+          <Nav className="mr-auto">
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/trade">Trade</Nav.Link>
+            <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+            <Nav.Link href="/about">About</Nav.Link>
+          </Nav>
+        </Navbar>
+
+        <div className="App-content">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/trade">
+              <Trade />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+          </Switch>
+        </div>
       </div>
     </Router>
   );
 }
 
-// function Trade() {
-//   return (
-//     <div>
-//       <h2>Trade</h2>
-//     </div>
-//   );
-// }
-
-function About() {
-  return (
+//crypto Lorem Ipsum taken from https://placehodler.shapelabs.co/
+const Home = () => (
+  <div>
+    <h2>Welcome!</h2>
     <div>
-      <h2>About</h2>
+      <p>
+        ICO based on few centralised exchange at many IPO, yet Cardano looked at
+        the <em>efficient</em> bear when Mt. Gox accompanied by many
+        considerable shitcoin. When Solidity proves a proof of work{" "}
+        <a href="https://example.com">during</a> a{" "}
+        <em>delegated proof-of-stake, Decred left few</em> mnemonic phrase,
+        however, Golem mining many algo-traded <em>crypto-jacking!</em> Since
+        Augur halving some dormant moon, SHA 256{" "}
+        <a href="https://example.com">sharded the constant</a> turing-complete
+        after a bear trap. Although Cardano managed a <strong>efficient</strong>{" "}
+        digital signature during a chain, ICO thinking many burned moon, for{" "}
+        <strong>although</strong> they generates some trusted{" "}
+        <a href="https://example.com">multi signature, EOS surrendered</a> lots
+        of permissioned ledger behind few digital identity.
+      </p>
     </div>
-  );
-}
-
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
-    </div>
-  );
-}
+  </div>
+);
